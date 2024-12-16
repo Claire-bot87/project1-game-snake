@@ -1,0 +1,30 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+  }
+  
+  .grid-wrapper {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .grid {
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+    height: 650px;
+    width: 650px;
+  }
+  
+  .grid div {
+    border: 1px solid lightgrey;
+    display: inline-block;
+  }
+  
+
+  .hide {
+    display: none;
+  }
