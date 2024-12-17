@@ -28,3 +28,12 @@
   .hide {
     display: none;
   }
+
+  .snake {
+    background-color: black;
+  }
+
+  /*.cell {
+    background-color:blue;
+  }*/
+  
