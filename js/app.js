@@ -7,9 +7,8 @@ const totalCellCount = gridRows * gridColumns
 //-------------------------Variables---------------------- 
 //let currentPosition = startPosition
 let score = 0
-let snakeStartPosition = 10
-
 let snakePositions = [108, 128, 148]
+let snakeDirection = 20
 
 //-------------------------Elements----------------------
 //const startButtonElement = document.querySelector(".start-game")
@@ -22,6 +21,7 @@ const gridCells = []
 //const snakeEls = document.querySelectorAll('.cell')
 
 generateBox()
+startGame()
 
 //-------------------------Functions--------------------
 function generateBox() {
@@ -35,15 +35,12 @@ function generateBox() {
         gridCells.push(cell)
 
     }
-    moveSnake()
+  
     addSnake()
-}
-//move right head +1
-function moveSnake() {
-    snakePositions.pop()
-    snakePositions.unshift(snakePositions[0] + 1)
 
 }
+
+
 
 
 function addSnake() {
@@ -53,18 +50,51 @@ function addSnake() {
 }
 
 function removeSnake() {
-
-    snakePositions.pop()
+    snakePositions.forEach(snakePositionIdx => {
+        gridCells[snakePositionIdx].classList.remove('snake')
+    })
 }
-
-//move up head -20
-//move down + 20
-//move left - head -1
-//move right head +1
-
-
-
 
 
 
 //--------------------------Events---------------------
+
+function changeSnakeDirection(event) {
+    const pressedKey = event.code
+   
+     if ( pressedKey === 'ArrowLeft'){
+        snakeDirection = -1
+     }
+
+     else if ( pressedKey === 'ArrowRight'){
+        snakeDirection = 1
+     }
+     else if ( pressedKey === 'ArrowUp'){
+        snakeDirection = -20
+     }
+     else if ( pressedKey === 'ArrowDown'){
+        snakeDirection = 20
+     }
+}
+
+
+document.addEventListener('keydown', changeSnakeDirection)
+
+
+//-----------------------interval -----------------------
+
+function moveSnake() {
+    snakePositions.pop()
+    snakePositions.unshift(snakePositions[0] + snakeDirection)
+}
+
+function startGame() {
+    setInterval(() => {
+        removeSnake()
+        moveSnake()
+        addSnake()
+        console.log(snakePositions)
+    }, 2000)
+}
+//-----------event listeners----------------
+
