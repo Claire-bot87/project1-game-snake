@@ -4,6 +4,7 @@ const gridColumns = 20
 const totalCellCount = gridRows * gridColumns
 const gridCells = []
 
+
 //-------------------------Variables---------------------- 
 
 let score = 0
@@ -25,7 +26,9 @@ const foodElement = document.querySelector('.food')
 //-------------------------Functions--------------------
 
 generateBox()
+//houseWallCollision()
 startGame()
+
 
 //addFood()
 
@@ -57,9 +60,21 @@ function generateBox() {
 handleEatFood()
 
 
+// function houseWallCollision()
+// {
+//     let snakeHead = gridCells[snakePositionIdx]
+//     console.log('snakeHead')
+//     handleWallCollision()
+// }
+
 function addSnake() {
     snakePositions.forEach(snakePositionIdx => {
         gridCells[snakePositionIdx].classList.add('snake')
+        //  console.log(snakePositions)
+        // console.log(snakePositions[0])
+        // handleWallCollision()
+        //console.log(gridCells[snakePositionIdx])
+   
     })
 }
 
@@ -67,6 +82,7 @@ function addSnake() {
 function removeSnake() {
     snakePositions.forEach(snakePositionIdx => {
         gridCells[snakePositionIdx].classList.remove('snake')
+       
     })
 }
 
@@ -85,13 +101,15 @@ function changeSnakeDirection(event) {
     else if (pressedKey === 'ArrowDown') {
         snakeDirection = 20
     }
+ 
+   // handleWallCollision()
 }
 
 
 function moveSnake() {
     snakePositions.pop()
     snakePositions.unshift(snakePositions[0] + snakeDirection)
-   
+  
 }
 
 function startGame() {
@@ -103,55 +121,38 @@ function startGame() {
         addSnake()
        
         handleEatFood()
-        //console.log(snakePositions)
+        console.log(snakePositions)
+        console.log(snakePositions[0])
+        console.log(snakeDirection)
+        handleWallCollision()
         //removeFood()
-
+        //handleWallCollision()
         // replaceFood()
     }, 1000)
 
 }
 
 
-
-//console.log(randomCellIndex)
-//console.log(gridCells)
-
-// eatFood()
-//gridCells[randomCellIndex].classList.add('food')
-
-//console.log(gridCells[randomCellIndex])
-
-// function moveFood(){
-//     removeFood()
-//     let randomCellIndex = Math.floor(Math.random()* gridCells.length)
-//     addFood(randomCellIndex)
-//     console.log(randomCellIndex)
-// }
-
-
-// function addFood(randomCellIndex){
-//     gridCells[randomCellIndex].classList.add('food')
-// }
-
 const food = document.querySelector(".food")
 //const cellElement = document.querySelector(".cell")
 
 
 function handleEatFood() {
-console.log(gridCells[currentFoodIdx])
-console.log(gridCells[currentFoodIdx].classList.contains('snake'))
+//console.log(gridCells[currentFoodIdx])
+//console.log(gridCells[currentFoodIdx].classList.contains('snake'))
     if (gridCells[currentFoodIdx].classList.contains('snake')) {
         replaceFood()
     }
     
 }
 function replaceFood(){
-console.log(currentFoodIdx)
+//console.log(currentFoodIdx)
     removeFood()
     currentFoodIdx = Math.floor(Math.random() * gridCells.length)
     addFood()
     incrementScore()
-console.log(currentFoodIdx)
+
+//console.log(currentFoodIdx)
 }
 
 
@@ -169,16 +170,53 @@ function incrementScore(){
     scoreElement.innerHTML = score
 
 }
-// function removeFood() {
 
-//     if (gridCells[randomCellIndex].classList.contains('snake')) {
-//         food.classList.remove("food")
+function handleWallCollision(){
+    
+   
+
+ 
+    if ((snakePositions[0] < gridColumns && snakeDirection === -20 ) || 
+    (snakePositions[0] + gridColumns >= totalCellCount && snakeDirection === 20)||
+    (snakePositions[0] % gridColumns === 0 && snakeDirection === -1)||
+    ((snakePositions[0] + 1) % gridColumns === 0 && snakeDirection === 1)
+        ) { 
+            setInterval(() => {
+                if ((snakePositions[0] < gridColumns && snakeDirection === -20) ||
+                 (snakePositions[0] + gridColumns >= totalCellCount && snakeDirection === 20)||
+                 (snakePositions[0] % gridColumns === 0 && snakeDirection === -1)||
+                 ((snakePositions[0] + 1) % gridColumns === 0 && snakeDirection === 1)
+                ){
+        console.log('GAME OVER!')
+    } else {
+        console.log("playing game!")
+    }
+  }  , 800)
+    }}
+
+
+
+
+//     if (snakeHead = true ){
+//         console.log('playing game')
+//     } else {
+//         console.log("GAME OVER!")
 //     }
 // }
 
-// function addFood() {
-//     gridCells[randomCellIndex].classList.add('food')
+
+//     if (gridCells[snakePositionIdx] < gridColumns) {
+
+
+// setInterval(() => {
+//     if (gridCells[snakePositionIdx] < gridColumns) {
+// console.log("GAMEOVER!!")
+// clearInterval
+// }, 1000)
+
 // }
+
+
 //--------------------------Event Listeners---------------------
 
 document.addEventListener('keydown', changeSnakeDirection)
