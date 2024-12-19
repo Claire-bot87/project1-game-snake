@@ -7,8 +7,9 @@ const gridCells = []
 //-------------------------Variables---------------------- 
 
 let score = 0
-let snakePositions = [108, 128, 148]
+let snakePositions = [148, 128, 108]
 let snakeDirection = 20
+let currentFoodIdx = 248
 
 
 
@@ -25,10 +26,9 @@ const foodElement = document.querySelector('.food')
 
 generateBox()
 startGame()
-// moveFood()
+
 //addFood()
-//eatFood()
-// eatFood()
+
 
 function generateBox() {
     for (let idx = 0; idx < totalCellCount; idx++) {
@@ -46,11 +46,15 @@ function generateBox() {
 
 
 //-------------------extraElements after page load-----------------
-const allCellsElement = document.querySelectorAll('.cell')
-let randomCellIndex = Math.floor(Math.random()* allCellsElement.length)
-addFood()
-//-------------------------Functions continued--------------------
 
+
+//let randomCellIndex = Math.floor(Math.random() * gridCells.length)
+// let replacementRandomCellIndex = Math.floor(Math.random()* gridCells.length)
+// let randomCellIndex = 3
+//-------------------------Functions continued--------------------
+//addFood()
+//removeFood ()
+handleEatFood()
 
 
 function addSnake() {
@@ -68,95 +72,113 @@ function removeSnake() {
 
 function changeSnakeDirection(event) {
     const pressedKey = event.code
-   
-     if ( pressedKey === 'ArrowLeft'){
+
+    if (pressedKey === 'ArrowLeft') {
         snakeDirection = -1
-     }
-     else if ( pressedKey === 'ArrowRight'){
+    }
+    else if (pressedKey === 'ArrowRight') {
         snakeDirection = 1
-     }
-     else if ( pressedKey === 'ArrowUp'){
+    }
+    else if (pressedKey === 'ArrowUp') {
         snakeDirection = -20
-     }
-     else if ( pressedKey === 'ArrowDown'){
+    }
+    else if (pressedKey === 'ArrowDown') {
         snakeDirection = 20
-     }
+    }
 }
 
 
 function moveSnake() {
     snakePositions.pop()
     snakePositions.unshift(snakePositions[0] + snakeDirection)
+   
 }
 
 function startGame() {
+    addFood()
     setInterval(() => {
-       
+
         removeSnake()
         moveSnake()
         addSnake()
-        console.log(snakePositions)
-        
-    }, 2000)
-    
+       
+        handleEatFood()
+        //console.log(snakePositions)
+        //removeFood()
+
+        // replaceFood()
+    }, 1000)
+
 }
 
 
 
-console.log(randomCellIndex)
-console.log(allCellsElement)
+//console.log(randomCellIndex)
+//console.log(gridCells)
 
 // eatFood()
-//allCellsElement[randomCellIndex].classList.add('food')
+//gridCells[randomCellIndex].classList.add('food')
 
-console.log(allCellsElement[randomCellIndex])
+//console.log(gridCells[randomCellIndex])
 
 // function moveFood(){
 //     removeFood()
-//     let randomCellIndex = Math.floor(Math.random()* allCellsElement.length)
+//     let randomCellIndex = Math.floor(Math.random()* gridCells.length)
 //     addFood(randomCellIndex)
 //     console.log(randomCellIndex)
 // }
 
 
 // function addFood(randomCellIndex){
-//     allCellsElement[randomCellIndex].classList.add('food')
+//     gridCells[randomCellIndex].classList.add('food')
 // }
 
 const food = document.querySelector(".food")
 //const cellElement = document.querySelector(".cell")
 
-// function removeFood(){
-//     if (allCellsElement[randomCellIndex].classList.contains('snake')){
-//         food.classList.remove("food")
-//     }}
 
-
-    function addFood() {
-        let randomCellIndex = Math.floor(Math.random()* allCellsElement.length)
-        allCellsElement[randomCellIndex].classList.add('food')
-        }
+function handleEatFood() {
+console.log(gridCells[currentFoodIdx])
+console.log(gridCells[currentFoodIdx].classList.contains('snake'))
+    if (gridCells[currentFoodIdx].classList.contains('snake')) {
+        replaceFood()
+    }
     
+}
+function replaceFood(){
+console.log(currentFoodIdx)
+    removeFood()
+    currentFoodIdx = Math.floor(Math.random() * gridCells.length)
+    addFood()
+    incrementScore()
+console.log(currentFoodIdx)
+}
 
 
-// function eatFood(){
-//     //addFood()
-//     let randomCellIndex = Math.floor(Math.random()* allCellsElement.length)
-//     if (allCellsElement[randomCellIndex].classList.contains('snake')){
-//     removeFood()}
-// //increment score by 5
+function addFood(){
+    gridCells[currentFoodIdx].classList.add('food')
+}
 
+function removeFood(){
+    gridCells[currentFoodIdx].classList.remove("food")
+}
+
+function incrementScore(){
+    score = score + 5
+    console.log(score)
+    scoreElement.innerHTML = score
+
+}
+// function removeFood() {
+
+//     if (gridCells[randomCellIndex].classList.contains('snake')) {
+//         food.classList.remove("food")
 //     }
-
-
-// function eatFood(){
-//     addFood()
-//     removeFood()
 // }
 
+// function addFood() {
+//     gridCells[randomCellIndex].classList.add('food')
+// }
 //--------------------------Event Listeners---------------------
 
 document.addEventListener('keydown', changeSnakeDirection)
-
-
-
