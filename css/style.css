@@ -14,6 +14,7 @@
   }
   
   .grid {
+    /*display: flex;*/
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
     height: 650px;
     width: 650px;
@@ -34,6 +35,13 @@
   }
 
   .food {
-    background-color:blue;
+    background-color:black;
 }
   
+   .game-over {
+    height: 650px;
+    width: 650px;
+    background-color:rgb(40, 228, 184);
+    text-align: center;
+    font-size: 50px;
+}
