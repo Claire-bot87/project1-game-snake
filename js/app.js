@@ -3,7 +3,7 @@ const gridRows = 20
 const gridColumns = 20
 const totalCellCount = gridRows * gridColumns
 const gridCells = []
-
+let welcome
 
 //-------------------------Variables---------------------- 
 
@@ -23,30 +23,60 @@ const gridWrapper = document.querySelector('.grid-wrapper')
 const scoreElement = document.querySelector('.score')
 const foodElement = document.querySelector('.food')
 const startButtonElement = document.querySelector('.start-game')
+const playAgainElement = document.querySelector('.play-again')
+//const bodyElement =  document.querySelector('.body')
+
 
 
 
 
 //-------------------------Functions--------------------
-
-generateBox()
+generateWelcome()
+//generateBox()
 //houseWallCollision()
 //startGame()
 
 
 //addFood()
+function generateWelcome() {
+    welcome = document.createElement('div');
+    welcome.classList.add('welcome')
+    gridContainer.appendChild(welcome)
+    
+}
 
+
+/*function removeWelcome(){
+    gridContainer.removeChild(welcome)  
+
+}*/
+
+function removeWelcome() {
+    if (gridContainer.contains(welcome)) {  
+        gridContainer.removeChild(welcome);
+    } else {
+        console.log("No welcome element to remove.");
+    }
+}
+
+// function removeGameOverBox() {
+//     if (gridWrapper.contains(game-over)) {  
+//         gridContainer.removeChild(BoxElement);
+//     } else {
+//         console.log("No game-over element to remove.");
+//     }
+// }
 
 function generateBox() {
     for (let idx = 0; idx < totalCellCount; idx++) {
         const cell = document.createElement('div')
         cell.classList.add('cell')
-        cell.innerText = idx
+        /*cell.innerText = idx*/
         cell.style.width = `${100 / gridColumns}%`
         cell.style.height = `${100 / gridRows}%`
         gridContainer.appendChild(cell)
         gridCells.push(cell)
-        gridContainer.style.position = "relative";
+        gridContainer.style.position = "absolute";
         gridWrapper.style.position = "relative";
         //cell.style.position = absolute;
         //cell.style.position = relative;
@@ -66,7 +96,7 @@ function generateBox() {
 //-------------------------Functions continued--------------------
 //addFood()
 //removeFood ()
-handleEatFood()
+
 //endGame()
 
 // function houseWallCollision()
@@ -77,6 +107,7 @@ handleEatFood()
 // }
 
 function addSnake() {
+    if (gameStatus === 'ended') return
     snakePositions.forEach(snakePositionIdx => {
         gridCells[snakePositionIdx].classList.add('snake')
         //  console.log(snakePositions)
@@ -88,6 +119,7 @@ function addSnake() {
 }
 
 function removeSnake() {
+    if (gameStatus === 'ended') return
     snakePositions.forEach(snakePositionIdx => {
         gridCells[snakePositionIdx].classList.remove('snake')
 
@@ -125,16 +157,60 @@ function growSnake() {
 }
 
 function startGame() {
-    
+    removeWelcome()
+    generateBox()
     addFood()
     const gameInterval = setInterval(() => {
         console.log(timeGap)
+       // handleWallCollision()
+        console.log(`CONFIRMING GAME STATUS ${gameStatus}`)
+        //console.log(`SPEED IS ${timeGap}`)
+        if (gameStatus === 'ended'){
+            clearInterval(gameInterval)
+            console.log('GAME HAS ENDED')
+            }
+
+        removeSnake()
+        moveSnake()
+        addSnake()
+
+        handleEatFood()
+        console.log(snakePositions)
+        console.log(snakePositions[0])
+        console.log(snakeDirection)
         handleWallCollision()
+        //removeFood()
+        //handleWallCollision()
+        // replaceFood()
+       handleSnakeTouchesSnake()
+       //console.log('INTERVAL 1 RUNNING')
+       
+    }, timeGap)
+
+}
+
+
+function restartGame() {
+    console.log(`GAME RESTARTING${gameStatus}`)
+    console.log(`CONFIRMING GAME STATUS ${gameStatus}`)
+    //console.log(`SPEED IS ${timeGap}`)
+  //  generateBox()
+  //  removeSnake()
+ //timeGap = 400
+ score = 0
+ scoreElement.innerHTML = score
+ snakeDirection = 20
+    snakePositions = [146, 126, 106]
+     addFood()
+    const gameInterval = setInterval(() => {
+        // console.log(`SPEED IS ${timeGap}`)
+       // handleWallCollision()
         console.log(`CONFIRMING GAME STATUS ${gameStatus}`)
         if (gameStatus === 'ended'){
             clearInterval(gameInterval)
             console.log('GAME HAS ENDED')
             }
+        //score = 0
         removeSnake()
         moveSnake()
         addSnake()
@@ -153,12 +229,9 @@ function startGame() {
     }, timeGap)
 
 
-// const stopInterval = setTimeout(() => {
-//     if (gameStatus === "ENDED"){
-// clearInterval(gameInterval)
-// }
-// }, 10)
 }
+
+
 
 
 const food = document.querySelector(".food")
@@ -166,6 +239,7 @@ const food = document.querySelector(".food")
 
 
 function handleEatFood() {
+    if (gameStatus === 'ended') return
     //console.log(gridCells[currentFoodIdx])
     //console.log(gridCells[currentFoodIdx].classList.contains('snake'))
     if (gridCells[currentFoodIdx].classList.contains('snake')) {
@@ -241,6 +315,7 @@ function handleSnakeTouchesSnake(){
 
     for(let i = 1; i < snakePositions.length; i++){
 if (snakePositions[i] === snakePositions[0]){
+    console.log("SNAKE TOUCHES SNAKE")
     endGame()
     }
     }}
@@ -254,24 +329,90 @@ if (snakePositions[i] === snakePositions[0]){
 
 function endGame() {
     gameStatus = 'ended'
+    console.log('endgame function has executed')
+//removeSnake()
+    const bodyElement =  document.querySelector('.body')
     const gridContainer = document.querySelector('.grid')
     const gridWrapper = document.querySelector('.grid-wrapper')
     const boxElement = document.createElement('div')
     boxElement.classList.add('game-over')
     boxElement.textContent = 'GAME OVER!'
     gridWrapper.appendChild(boxElement)
-    // boxElement.style.width = 50 %
-    // boxElement.style.height = 50 %
-//     const list = document.getElementById("myList");
-// list.insertBefore(gridContainer, list.children[0]);
-    boxElement.style.position = "absolute";
+    const playAgainElement = document.createElement('button')
+    playAgainElement.classList.add('play-again')
+    playAgainElement.textContent = 'PLAY AGAIN NOW!'
+    const startButtonElement = document.querySelector('.start-game')
     
-    // boxElement.style.z - index = 1
-console.log(gameStatus)
+  
+if(startButtonElement){
+    startButtonElement.replaceWith(playAgainElement)}
+
+
+
+   playAgainElement.addEventListener('click', restartGame)
+//generatePlayAgainButton()
+  const removeGameOver = setTimeout(() => {
+  const removeGameOverBox = ()=>{
+
+ if (gridWrapper.contains(boxElement)) {  
+     gridWrapper.removeChild(boxElement)
+ } else {
+     console.log("No game-over element to remove.");
 }
+ }
+removeGameOverBox()
+gameStatus = 'start'
+//removeSnake()
+clearSnake()
+clearFood()
+//generatePlayAgainButton()
+  snakePositions = [149, 129 , 109]
+//snakePositions = 0
+ //removeSnake()
+ //currentFoodIdx = 248
+
+ }, 1000)
+ console.log(gameStatus)
 
 
+ }
+
+// function generatePlayAgainButton() {
+//     const playAgainElement = document.createElement('button')
+//     playAgainElement.classList.add('play-again')
+//     playAgainElement.textContent = 'PLAY AGAIN NOW!'
+//     const startButtonElement = document.querySelector('.start-game')
+    
+  
+// if(startButtonElement){
+//     startButtonElement.replaceWith(playAgainElement)}
+
+
+
+//    playAgainElement.addEventListener('click', restartGame)
+
+
+// }
+
+
+function clearSnake(){
+//     if (gridCells.classList.contains('snake')){
+//         gridCells.classList.remove('snake')
+// }
+gridCells.forEach(gridCell => {
+    gridCell.classList.remove('snake')
+})}
+
+
+
+function clearFood(){
+    gridCells.forEach(gridCell => {
+        gridCell.classList.remove('food')
+    })
+
+}
 //--------------------------Event Listeners---------------------
 
 document.addEventListener('keydown', changeSnakeDirection)
 startButtonElement.addEventListener('click', startGame)
+//playAgainElement.addEventListener('click', restartGame)
