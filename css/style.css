@@ -1,102 +1,99 @@
-
-
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 * {
-    box-sizing: border-box;
-   /* background-image: url(../images/giphy.webp);*/
-    background-size: contain;
-    background-position: center;
-    /*display: inline-flex;*/
-    /*display: flex;
+  box-sizing: border-box;
+  /* background-image: url(../images/giphy.webp);*/
+  background-size: contain;
+  background-position: center;
+  /*display: inline-flex;*/
+  /*display: flex;
     flex-basis: auto;*/
-  }
-
-
-  h1 {
-      font-family: "Press Start 2P", serif;
-      font-weight: 400;
-      font-style: normal;
-      font-size: 100px;
-      color: rgb(0, 255, 17);
-      padding-top: 0px;
-      padding-bottom: 0px;
-      /*background-image: url('../images/giphy.webp');*/
-      /*background-image: url(../images/giphy.webp);*/
-      background-size: contain;
-    background-position: center;
-   
-      
-  }
-  
-  body {
-    margin: 0;
-    background-color: black;
-   
-  }
-  
-  .grid-wrapper {
-    min-height: 60vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-basis: auto;
-    /*background-image: url('images/giphy.webp');*/
-    /*background-image: url(../images/giphy.webp);*/
-    background-size: contain;
-    background-position: center;
-    position: relative
-    
-  }
-  
-  .grid {
-    /*display: flex;*/
-   
-    height: 650px;
-    width: 650px;
-    position: absolute;
-    background-color: #00ff11;
-    /*background-image: url(../images/giphy.webp);*/
-  }
-  
-  .grid div {
-    /*border: 1px solid black;*/
-    display: inline-block;
-  }
-  
-
-  .snake {
-    background-color: black;
-  }
-
-  .food {
-    background-color:black;
 }
-  
-   .game-over {
-    height: 650px;
-    width: 650px;
-    /*background-color:rgb(40, 228, 184);*/
-    text-align: center;
-    font-size: 50px;
-    background-image: url(../images/giphy.webp);
-    /*background-image: url(black-cat.jpg);*/
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    position:absolute;
-    background-color: #00ff11;
+
+
+h1 {
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 100px;
+  color: rgb(0, 255, 17);
+  padding-top: 0px;
+  padding-bottom: 0px;
+  /*background-image: url('../images/giphy.webp');*/
+  /*background-image: url(../images/giphy.webp);*/
+  background-size: contain;
+  background-position: center;
+
+
+}
+
+body {
+  margin: 0;
+  background-color: black;
+
+}
+
+.grid-wrapper {
+  min-height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-basis: auto;
+  /*background-image: url('images/giphy.webp');*/
+  /*background-image: url(../images/giphy.webp);*/
+  background-size: contain;
+  background-position: center;
+  position: relative
+}
+
+.grid {
+  /*display: flex;*/
+
+  height: 650px;
+  width: 650px;
+  position: absolute;
+  background-color: #00ff11;
+  /*background-image: url(../images/giphy.webp);*/
+}
+
+.grid div {
+  /*border: 1px solid black;*/
+  display: inline-block;
+}
+
+
+.snake {
+  background-color: black;
+}
+
+.food {
+  background-color: black;
+}
+
+.game-over {
+  height: 650px;
+  width: 650px;
+  /*background-color:rgb(40, 228, 184);*/
+  text-align: center;
+  font-size: 50px;
+  background-image: url(../images/giphy.webp);
+  /*background-image: url(black-cat.jpg);*/
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  background-color: #00ff11;
 
 }
 
 .welcome {
   background-color: black;
   height: 650px;
-    width: 650px;
-    background-image: url(../images/giphy2.webp);
+  width: 650px;
+  background-image: url(../images/giphy2.webp);
 }
 
-.h1-wrapper{
+.h1-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -104,16 +101,16 @@
   height: 120px;
 }
 
-.score{
+.score {
   font-family: "Press Start 2P", serif;
-  color:rgb(255, 0, 200);
+  color: rgb(255, 0, 200);
   font-size: 50px;
-  
+
 }
 
-.score-message{
+.score-message {
   font-family: "Press Start 2P", serif;
-  color:rgb(255, 0, 200);
+  color: rgb(255, 0, 200);
   font-size: 50px;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -121,12 +118,12 @@
   margin-bottom: 0px;
 }
 
-.padding{
-  display:flex;
+.padding {
+  display: flex;
 }
 
 .start-game {
-  background-color: rgb(255,0,200);
+  background-color: rgb(255, 0, 200);
   border: none;
   color: white;
   padding: 15px 32px;
@@ -136,8 +133,8 @@
   font-size: 16px;
 }
 
-.play-again{
-  background-color: rgb(255,0,200);
+.play-again {
+  background-color: rgb(255, 0, 200);
   border: none;
   color: white;
   padding: 15px 32px;
