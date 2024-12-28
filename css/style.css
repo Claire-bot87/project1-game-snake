@@ -36,7 +36,7 @@
   }
   
   .grid-wrapper {
-    min-height: 100vh;
+    min-height: 60vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -46,6 +46,7 @@
     background-size: contain;
     background-position: center;
     position: relative
+    
   }
   
   .grid {
@@ -104,15 +105,44 @@
 }
 
 .score{
+  font-family: "Press Start 2P", serif;
   color:rgb(255, 0, 200);
   font-size: 50px;
+  
 }
 
 .score-message{
+  font-family: "Press Start 2P", serif;
   color:rgb(255, 0, 200);
   font-size: 50px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 .padding{
   display:flex;
+}
+
+.start-game {
+  background-color: rgb(255,0,200);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.play-again{
+  background-color: rgb(255,0,200);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }

@@ -157,6 +157,7 @@ function growSnake() {
 }
 
 function startGame() {
+    snakeDirection = 20
     removeWelcome()
     generateBox()
     addFood()
@@ -253,6 +254,11 @@ function replaceFood() {
     //console.log(currentFoodIdx)
     removeFood()
     currentFoodIdx = Math.floor(Math.random() * gridCells.length)
+    while (gridCells[currentFoodIdx].classList.contains('snake')) {
+        currentFoodIdx = Math.floor(Math.random() * gridCells.length)
+    }
+    console.log(`SCORE ${score}`)
+    console.log(`CURRENT FOOD IDX ${currentFoodIdx}`)
     addFood()
     incrementScore()
     timeGap = (timeGap/100)*95
@@ -262,6 +268,9 @@ function replaceFood() {
 
 
 function addFood() {
+    while (gridCells[currentFoodIdx].classList.contains('snake')) {
+        currentFoodIdx = Math.floor(Math.random() * gridCells.length)
+    }
     gridCells[currentFoodIdx].classList.add('food')
 }
 
