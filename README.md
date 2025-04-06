@@ -1,4 +1,4 @@
-# General Assembly Project 4
+# General Assembly Project 1
 
 ### Table of Contents
 * [Description](#description)
