@@ -63,7 +63,7 @@ function generateBox() {
         gridCells.push(cell)
         gridContainer.style.position = "absolute";
         gridWrapper.style.position = "relative";
-  
+
     }
     addSnake()
 
@@ -76,8 +76,6 @@ function addSnake() {
     if (gameStatus === 'ended') return
     snakePositions.forEach(snakePositionIdx => {
         gridCells[snakePositionIdx].classList.add('snake')
-
-
     })
 }
 
@@ -199,10 +197,9 @@ function handleEatFood() {
     if (gridCells[currentFoodIdx].classList.contains('snake')) {
         replaceFood()
         growSnake()
-
     }
-
 }
+
 function replaceFood() {
 
     removeFood()
@@ -239,9 +236,6 @@ function incrementScore() {
 
 function handleWallCollision() {
 
-
-
-
     if ((snakePositions[0] < gridColumns && snakeDirection === -20) ||
         (snakePositions[0] + gridColumns >= totalCellCount && snakeDirection === 20) ||
         (snakePositions[0] % gridColumns === 0 && snakeDirection === -1) ||
@@ -261,7 +255,7 @@ function handleWallCollision() {
             }
         }, (timeGap / 100) * 95)
 
-  
+
     }
 }
 
@@ -317,12 +311,12 @@ function endGame() {
         }
         removeGameOverBox()
         gameStatus = 'start'
- 
+
         clearSnake()
         clearFood()
-       
+
         snakePositions = [149, 129, 109]
-     
+
 
     }, 1000)
     console.log(gameStatus)

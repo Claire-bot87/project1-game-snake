@@ -2,12 +2,9 @@
 
 * {
   box-sizing: border-box;
-  /* background-image: url(../images/giphy.webp);*/
   background-size: contain;
   background-position: center;
-  /*display: inline-flex;*/
-  /*display: flex;
-    flex-basis: auto;*/
+
 }
 
 
@@ -19,8 +16,6 @@ h1 {
   color: rgb(0, 255, 17);
   padding-top: 0px;
   padding-bottom: 0px;
-  /*background-image: url('../images/giphy.webp');*/
-  /*background-image: url(../images/giphy.webp);*/
   background-size: contain;
   background-position: center;
 
@@ -30,6 +25,9 @@ h1 {
 body {
   margin: 0;
   background-color: black;
+  /* display:flex;
+  flex-direction: column;
+  justify-content: center; */
 
 }
 
@@ -39,25 +37,19 @@ body {
   justify-content: center;
   align-items: center;
   flex-basis: auto;
-  /*background-image: url('images/giphy.webp');*/
-  /*background-image: url(../images/giphy.webp);*/
   background-size: contain;
   background-position: center;
   position: relative
 }
 
 .grid {
-  /*display: flex;*/
-
   height: 650px;
   width: 650px;
   position: absolute;
   background-color: #00ff11;
-  /*background-image: url(../images/giphy.webp);*/
 }
 
 .grid div {
-  /*border: 1px solid black;*/
   display: inline-block;
 }
 
@@ -73,11 +65,9 @@ body {
 .game-over {
   height: 650px;
   width: 650px;
-  /*background-color:rgb(40, 228, 184);*/
   text-align: center;
   font-size: 50px;
   background-image: url(../images/giphy.webp);
-  /*background-image: url(black-cat.jpg);*/
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -98,18 +88,26 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 120px;
+  height: 20vh;
+  width:40vw;
+  margin-left: 30vw;
+  margin-right: 30vw;
+  background-image: url(../images/Snake-title.png);
+  /* background-size: contain;
+  background-position: center; */
+  background-repeat: no-repeat;
+  /* position: absolute; */
 }
 
 .score {
-  font-family: "Press Start 2P", serif;
+  font-family: verdana;
   color: rgb(255, 0, 200);
   font-size: 50px;
 
 }
 
 .score-message {
-  font-family: "Press Start 2P", serif;
+  font-family: verdana;
   color: rgb(255, 0, 200);
   font-size: 50px;
   padding-top: 0px;
