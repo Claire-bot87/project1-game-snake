@@ -99,12 +99,16 @@ function growSnake() {
 ```
 
 #### snake hits the wall
+This code says, if the position of the snakes head is less than 20, and it is traveling up, then we give the player a short amount of time to change direction and avert distaster (hitting the wall).
 
+The const delay = setTimeout(() => { says that if the snake direction does not change within a certain time period, then the snake ‘hits the wall’, dies and the game is over.
 
-```.jsfunction handleWallCollision() {
+This is an snippet of the code showing an example of when the snake is moving up the screen:
 
+```.js
     if ((snakePositions[0] < gridColumns && snakeDirection === -20)) 
-    {
+    ```
+```.js
         const delay = setTimeout(() => {
             if ((snakePositions[0] < gridColumns && snakeDirection === -20)) 
             {
@@ -116,11 +120,6 @@ function growSnake() {
     }
 }
 ```
-
-
-This code says, if the position of the snakes head is less than 20, and it is traveling up, then we give the player a short amount of time to change direction and avert distaster (hitting the wall).
-
-The const delay = setTimeout(() => { says that if the snake direction does not change within a certain time period, then the snake ‘hits the wall’ and dies Game over
 
 
 #### snake hits itself
