@@ -40,16 +40,19 @@ Here is the GitHub repo for my project: https://github.com/Claire-bot87/project1
 This was a solo project so I worked independently on it. We had 1 week to complete the project and I completed it within that time frame.
 
 ### Technologies Used
-Visual Studio Code
-Slack
-Zoom 
-Javascript
-Html
-giphy
+- Visual Studio Code
+- Slack
+- Zoom 
+- JavaScript
+- HTML
+- CSS
 
 
 ### Brief
-Snake is a single-player game where the player earns points by guiding the snake to eat food randomly placed on the game board. The snake should grow longer each time it eats a piece of food. The game ends if the snake hits a wall or touches itself.
+- Snake is a single-player game where the player earns points by guiding the snake to eat food randomly placed on the game board. 
+- The snake should grow longer each time it eats a piece of food.
+- The game ends if the snake hits a wall or touches itself.
+- The speed at which the snake moves should increase as the games progresses.
 
 ## Planning
 ![Wireframe 1](https://res.cloudinary.com/dpv0j8frj/image/upload/v1743000010/excalidraw_wireframe_snake_n6dd8k.png)
@@ -154,13 +157,10 @@ Then i considered an interval
 
 
 ## Key Learnings
-- I got a much better understanding of the global scope.
-- Declaring a function
-- Calling a function
-- A little better at looping through an array.
-
-
-
+- I gained a much better understanding of the concept of global scope.
+- I gained a clearer perspectiuve on how to declare a function, and how that differs from calling a function.
+- A got a little better at looping through an array.
 
 ## Future Improvements
-
+- Visually I think so of the imagery(gifs) could be improved, to enhance the look and feel of the game.
+- I could save each score when the game ends, so that I can display the player's top score, improving the user experience.  
